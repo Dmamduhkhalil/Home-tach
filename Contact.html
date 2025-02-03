@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>فورم التواصل</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            padding: 20px;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #00c3ff;
+            border-radius: 4px;
+        }
+        input[type="Phone"], input[type="Phone"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #00c3ff;
+            border-radius: 4px;
+        }
+        button {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <main>
+            <header>
+                <div class="left-head">
+                    <div class="logo">
+                        <img src="logo.png" alt="">
+                    </div>
+        
+                    <nav id="navbar">
+                        <div class="close">
+                            <img src="close.png" alt="">
+                        </div>
+        
+        
+                        </div>
+                    </nav>
+                </div>
+        
+        
+                <div class="right-head">
+                    <a href="#">Log In</a>
+                    <a href="#">Create Account</a>
+                </div>
+        
+                <div class="menu">
+                    <img src="menu.png" alt="">
+                </div>
+            </header>
+
+    <h1 style="text-align: center;">فورم التواصل</h1>
+    <form id="contactForm">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">البريد الإلكتروني:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="Phone"> رقم الموبايل:</label>
+        <input type="Phone" id="phone" name="phone" required>
+
+        <label for="message">الرسالة:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">إرسال</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // جمع البيانات من الفورم
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                Phone: document.getElementById('Phone').value,
+                message: document.getElementById('message').value
+            };
+
+            // إرسال البيانات لـ PHP
+            fetch('save_to_excel.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('تم إرسال البيانات بنجاح!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+
+<div class="footer">
+    <div class="footer-box">
+        <div class="box">
+            <div class="logo">
+                <img src="white-logo.png" alt="">
+            </div>
+
+            <p>
+                investing in your future one home at a time
+            </p>
+
+            <div class="subscribe">
+                <form action="">
+                        <input type="text" placeholder="Enter your email">
+                    <button>subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>quick link</h3>
+            <ul>
+                <li><a href="#">home</a></li>
+                <li><a href="#">rent</a></li>
+                <li><a href="#">sell</a></li>
+                <li><a href="about.html">about US</a></li>
+                <li><a href="Contact.html">contact</a></li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>about us</h3>
+            <ul>
+                <li><a href="#">payment place</a></li>
+                <li><a href="#">make saving more</a></li>
+                <li><a href="#">tax calculator</a></li>
+                <li><a href="#">talk to us</a></li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <ul>
+                <li>12street El Doki cairo</li>
+                <li>+201030317112</li>
+                <li>HR@PSD.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="copyright">
+        &copy; 2025 PSD all rights reserved
+    </div>
+</div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js" integrity="sha512-7Au1ULjlT8PP1Ygs6mDZh9NuQD0A5prSrAUiPHMXpU6g3UMd8qesVnhug5X4RoDr35x5upNpx0A6Sisz1LSTXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js" integrity="sha512-LQQDtPAueBcmGXKdOBcMkrhrtqM7xR2bVrnMtYZ8ImAZhFlIb5xrMqQ6uZviyeSB+4mYj89ta8niiCIQM1Gj0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <link rel="stylesheet" href="new.css">
+</head>
+<body>
+    <h1>لوحة التحكم</h1>
+    <form id="project-form">
+        <label for="title">عنوان المشروع:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">وصف المشروع:</label>
+        <textarea id="description" required></textarea>
+
+        <label for="price">سعر المشروع:</label>
+        <input type="number" id="price" required>
+
+        <label for="location">موقع المشروع:</label>
+        <input type="text" id="location" required>
+
+        <label for="image">صورة المشروع:</label>
+        <input type="file" id="image" accept="image/*" required>
+
+        <button type="submit">إضافة مشروع</button>
+    </form>
+
+    <h2>المشاريع المضافة</h2>
+    <div id="admin-projects-list"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
